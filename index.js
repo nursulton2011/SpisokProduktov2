@@ -2,37 +2,25 @@ const addButton = document.querySelector('.add-product');
 const clearButton = document.querySelector('.clear-list');
 const productsList = document.querySelector('.products-list');
 
-const typeError = document.getElementById('type-error');
-const nameError = document.getElementById('name-error');
-const countError = document.getElementById('count-error');
-
-function hideErrors() {
-  typeError.style.display = 'none';
-  nameError.style.display = 'none';
-  countError.style.display = 'none';
-}
-
 addButton.addEventListener('click', () => {
   const productType = document.getElementById('type-select').value;
   const productName = document.getElementById('product-name').value;
   const productCount = document.getElementById('product-count').value;
 
-  hideErrors();
-
   let isValid = true;
 
   if (!productType) {
-    typeError.style.display = 'block';
+    alert('Ошибка: Выберите тип продукта');
     isValid = false;
   }
 
   if (!productName) {
-    nameError.style.display = 'block';
+    alert('Ошибка: Введите название продукта');
     isValid = false;
   }
 
   if (!productCount) {
-    countError.style.display = 'block';
+    alert('Ошибка: Введите количество продукта');
     isValid = false;
   }
 
@@ -43,7 +31,7 @@ addButton.addEventListener('click', () => {
 
     productsList.appendChild(productItem);
 
- document.getElementById('type-select').value = "";
+    document.getElementById('type-select').value = "";
     document.getElementById('product-name').value = "";
     document.getElementById('product-count').value = "";
   }
@@ -52,3 +40,4 @@ addButton.addEventListener('click', () => {
 clearButton.addEventListener('click', () => {
   productsList.innerHTML = '';
 });
+
